@@ -10,7 +10,7 @@ class SocioForm(forms.ModelForm):
             'rut': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ej: 19.123.456-7'}),
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre y Apellidos'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'correo@ejemplo.cl'}),
-            'mensualidad_pagada': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+            'mensualidad_pagada': forms.NumberInput(attrs={'class': 'form-control', 'step': '1', 'placeholder':'Ej: 65000 (sin puntos)'}),
             'fecha_inscripcion': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'activo': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
