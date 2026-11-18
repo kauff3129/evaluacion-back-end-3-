@@ -1,0 +1,27 @@
+/* static/css/custom.css */
+body {
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-gym {
+    background: linear-gradient(90deg, #111827 0%, #1f2937 100%);
+    border-bottom: 3px solid #ef4444;
+}
+
+.brand-highlight {
+    color: #ef4444;
+    font-weight: 800;
+}
+
+.card-gym {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.badge-plan {
+    background-color: #1f2937;
+    color: #f9fafb;
+    font-weight: 600;
+}

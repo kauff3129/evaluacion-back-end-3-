@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Ficha de {{ socio.nombre }} | IronGym{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card card-gym">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center py-3">
+                <h4 class="mb-0">Ficha Oficial del Socio #{{ socio.id }}</h4>
+                {% if socio.activo %}
+                    <span class="badge bg-success fs-6">Membresía Activa</span>
+                {% else %}
+                    <span class="badge bg-secondary fs-6">Membresía Inactiva</span>
+                {% endif %}
+            </div>
+            <div class="card-body p-4">
+                <h5 class="text-danger fw-bold border-bottom pb-2 mb-3">Datos Personales</h5>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Nombre Completo:</div>
+                    <div class="col-sm-8 fw-bold">{{ socio.nombre }}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">RUT:</div>
+                    <div class="col-sm-8">{{ socio.rut }}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Correo Electrónico:</div>
+                    <div class="col-sm-8">{{ socio.email }}</div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-sm-4 text-muted">Fecha de Inscripción:</div>
+                    <div class="col-sm-8">{{ socio.fecha_inscripcion|date:"d \d\e F \d\e Y" }}</div>
+                </div>
+
+                <h5 class="text-danger fw-bold border-bottom pb-2 mb-3">Información del Plan (Modelo Padre)</h5>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Plan Contratado:</div>
+                    <div class="col-sm-8"><span class="badge badge-plan fs-6">{{ socio.plan.nombre }}</span></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Duración del Plan:</div>
+                    <div class="col-sm-8">{{ socio.plan.duracion_meses }} mes(es)</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Beneficios:</div>
+                    <div class="col-sm-8">{{ socio.plan.descripcion|default:"Sin descripción adicional." }}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Monto Cancelado:</div>
+                    <div class="col-sm-8 fw-bold text-success">${{ socio.mensualidad_pagada }}</div>
+                </div>
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-between py-3">
+                <a href="{% url 'socio_list' %}" class="btn btn-secondary">← Volver al Catálogo</a>
+                {% if user.is_authenticated %}
+                <div>
+                    <a href="{% url 'socio_update' socio.pk %}" class="btn btn-warning">Editar Socio</a>
+                    <a href="{% url 'socio_delete' socio.pk %}" class="btn btn-danger">Eliminar Socio</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
